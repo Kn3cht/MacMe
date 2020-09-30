@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <string.h> /* for strncpy */
-
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
@@ -9,16 +9,23 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 
-int main( int argc, char *argv[] )  {
+int main(int argc, char *argv[])
+{
     
-    if (argc == 1) { // no arguments
+    if (argc == 1)
+    { // no arguments
         // show help
-        printf("Welcome to MacMe!\n\nUse me -h to get an overview of all possible operation modes of me.");
+        printf("Welcome to MacMe!\n\nUse me -h to get an overview of all possible operation modes of me.\n");
         return 0;
-    } else {
-        if (strcmp(argv[1], "ip") == 0) { 
+    } 
+    else 
+    {
+        const char* program = argv[1];
+        if (strcmp(program, "ip") == 0)
+        { // ip program
             char* interface = "en0"; // default wifi interface on macOS
-            if (argc == 4 && strcmp(argv[2], "-i") == 0) {
+            if (argc == 4 && strcmp(argv[2], "-i") == 0)
+            {
                 interface = argv[3];
             }
             int fd;
@@ -32,6 +39,10 @@ int main( int argc, char *argv[] )  {
             close(fd);
             printf("%s\n", inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
             return 0;
+        }
+        else if (strcmp(program, "name") == 0)
+        {
+            system("echo $USER");
         }
     }
 }
