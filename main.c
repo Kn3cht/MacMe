@@ -41,8 +41,15 @@ int main(int argc, char *argv[])
             return 0;
         }
         else if (strcmp(program, "name") == 0)
-        {
+        { // print current user name
             system("echo $USER");
+        }
+        else if (strcmp(program, "terminal"))
+        { // open terminal in current directory
+            system("open .");
+        }
+        else if (strcmp(program, "")) {
+            system("open \"x-apple.systempreferences:com.apple.preference\"");
         }
     }
 }
