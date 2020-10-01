@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(program, "path") == 0)
         {
-            system("echo pwd");
+            system("pwd");
         }
     }
 }
