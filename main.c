@@ -68,5 +68,9 @@ int main(int argc, char *argv[])
         {
             system("sw_vers -productVersion");
         }
+        else if (strcmp(program, "path") == 0)
+        {
+            system("echo pwd");
+        }
     }
 }
