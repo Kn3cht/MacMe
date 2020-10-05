@@ -1,4 +1,13 @@
-all: main.c 
-	gcc -g -Wall -o me main.c
+CC = gcc
+CFLAGS = -Wall
+LDFLAGS = 
+OBJFILES = formatter.o main.o
+TARGET = me
+
+all: $(TARGET)
+
+$(TARGET): $(OBJFILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
+
 clean: 
-	$(RM) me
+	rm -rf $(OBJFILES) $(TARGET) *~

@@ -9,6 +9,8 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 
+#include "formatter.h"
+
 #define WELCOME "Welcome to MacMe!\n\nUse me -h to get an overview of all possible operation modes of me.\n"
 
 int main(int argc, char *argv[])
@@ -52,6 +54,18 @@ int main(int argc, char *argv[])
             printf("%s\n", inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
             return 0;
         }
+        else if (strcmp(program, "ipv6") == 0) 
+        {
+            char* interface = "en0"; // default wifi interface on macOS
+            char buffer [100];
+            if (argc == 4 && strcmp(argv[2], "-i") == 0)
+            {
+                interface = argv[3];
+            }
+            
+            snprintf (buffer, 100, "ifconfig %s | awk '/inet6/{print $2 $3}'", interface);
+            system(buffer);
+        }
         else if (strcmp(program, "name") == 0)
         { // print current user name
             system("echo $USER");
@@ -71,6 +85,29 @@ int main(int argc, char *argv[])
         else if (strcmp(program, "path") == 0)
         {
             system("pwd");
+        }
+        else if (strcmp(program, "interface") == 0) 
+        {
+            // TODO
+            // me interface <name>
+            
+        }
+        else if (strcmp(program, "mac") == 0)
+        {
+            char* interface = "en0"; // default wifi interface on macOS
+            char buffer [100];
+            if (argc == 4 && strcmp(argv[2], "-i") == 0)
+            {
+                interface = argv[3];
+            }
+            
+            snprintf (buffer, 100, "ifconfig %s | awk '/ether/{print $2}'", interface);
+            system(buffer);
+        }
+        else 
+        { // no such program
+            printf("No such program!\n");
+            printf(WELCOME);
         }
     }
 }
