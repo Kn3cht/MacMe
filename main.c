@@ -89,8 +89,15 @@ int main(int argc, char *argv[])
         else if (strcmp(program, "interface") == 0) 
         {
             // TODO
-            // me interface <name>
+            char* interface = "en0"; // default wifi interface on macOS
+            char buffer [100];
+            if (argc == 4 && strcmp(argv[2], "-i") == 0)
+            {
+                interface = argv[3];
+            }
             
+            snprintf (buffer, 100, "ifconfig %s", interface);
+            system(buffer);
         }
         else if (strcmp(program, "mac") == 0)
         {

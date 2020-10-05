@@ -12,11 +12,15 @@ $ cp ~/MacMe/me ./bin
 
 | Name     | Description                                                                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ``name``     | Returns the user name of the currently logged in user.                                                                                                      |
+| ``finder``   | Opens a finder window in the current directory. |
+| ``interface``| Returns the interface information of the interface ``en0`` (default). With the suffix [-i] <interface name> the interface can be changed.|
 | ``ip``       | Returns the ip address of the network interface ``en0`` (default). With the suffix [-i] <interface name> the ip address of a specific interface can be queried. |
-| ``finder``   | Opens a finder window in the current directory.                                                                                                             |
-| ``settings`` | Opens the settings window.                                                                                                                                  |
-| ``os``       | Returns the MacOS version.                                                                                                                                  |
+| ``ipv6``     | Returns the ip v6 address of the network interface ``en0`` (default). With the suffix [-i] <interface name> the ip v6 address of a specific interface can be queried. |
+| ``mac``      | Returns the mac address of the network interface ``en0`` (default). With the suffix [-i] <interface name> the mac address of a specific interface can be queried.|
+| ``name``     | Returns the user name of the currently logged in user. |
+| ``os``       | Returns the MacOS version. |
+| ``path``     | Prints the path of the current directory. |                                                                                                                         
+| ``settings`` | Opens the settings window. |
 
 ## Examples
 
